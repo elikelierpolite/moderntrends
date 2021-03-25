@@ -1,0 +1,63 @@
+{% extends 'social/base.html' %}
+{% block content %}
+{% if user.is_authenticated %}
+{% for info in data %}
+<div class="container">
+  <div class="card" style="width: 100%;">
+  <amp-img
+    alt="{{info.title}}"
+    src="{{info.img}}"
+    width="1080"
+    height="1080"
+    layout="responsive"
+    class="card-img-top"
+  >
+</amp-img>
+  <div class="card-body">
+    <h5 class="card-title" style="font-size:16x;font-family: 'Montserrat', sans-serif;">{{info.title}}</h5>
+    <p class="card-text" style="font-size:15px;font-family: 'Montserrat', sans-serif;">{{info.hook}}</p>
+        <a href="{{info.url}}" style="text-decoration:none;">
+        <div class="container-fluid rounded mb-5 p-2 text-center" style="background-color:#2a3eb1; height:3em;">
+        <span style="font-family: 'Josefin Sans', sans-serif; color:#fff; font-size:1em;">{{info.cta}}</span>
+        <i class="bi bi-arrow-right-circle-fill" style="color:#fff"></i>
+        </div>
+        </a>
+  </div>
+</div><br>
+</div>
+{% endfor %}
+{% for post in object_list %}
+<div class="container">
+  <div class="card" style="width: 100%;">
+  <amp-img
+    alt="{{post.headline}}"
+    src="{{post.img}}"
+    width="1080"
+    height="1080"
+    layout="responsive"
+    class="card-img-top"
+  >
+</amp-img>
+  <div class="card-body">
+    <h5 class="card-title" style="font-size:16x;font-family: 'Montserrat', sans-serif;">{{post.headline}}</h5>
+        <a href="{{post.ad_url}}" style="text-decoration:none;">
+        <div class="container-fluid rounded mb-5 p-2 text-center" style="background-color:#2a3eb1; height:3em;">
+        <span style="font-family: 'Josefin Sans', sans-serif; color:#fff; font-size:1em;">{{post.ad_cta}}</span>
+        <i class="bi bi-arrow-right-circle-fill" style="color:#fff"></i>
+        </div>
+        </a>
+  </div>
+</div><br>
+{% endfor %}
+{% else %}
+<div class="container">
+	<div class="d-flex flex-column">
+		<p class="m-auto">You must authenticate to view this page. </p>
+		<p class="m-auto">
+			<a href="{% url 'register' %}">Create an account</a> or 
+			<a href="{% url 'login' %}">login</a>.
+		</p>
+	</div>
+</div><br><br>
+{% endif %}
+{% endblock %}

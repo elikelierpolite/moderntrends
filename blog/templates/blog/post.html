@@ -1,0 +1,22 @@
+{% extends 'blog/index.html' %}
+{% block content %}
+{% for post in object_list %}
+<div class="container-fluid">
+  <div class="card" style="width: 100%">
+      <amp-img
+    alt="A view of the sea"
+    src="{{post.img}}"
+    width="1080"
+    height="1080"
+    layout="responsive"
+    >
+    </amp-img>
+  <div class="card-body">
+    <h5 class="card-title" style="font-family: 'Montserrat', sans-serif;">{{post.headline}}</h5>
+    <p class="card-text" style="font-family: 'Roboto', sans-serif;">{{post.hook}}</p>
+    <a href="{% url 'blog:postdetail' post.slug %}" class="btn btn-primary" style="font-family: 'Montserrat', sans-serif;background-color:#3a4cb1;color:white;width:100%">Read More</a>
+  </div>
+</div><br>
+</div>
+{% endfor %}
+{% endblock %}

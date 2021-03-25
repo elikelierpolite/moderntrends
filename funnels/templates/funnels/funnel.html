@@ -1,0 +1,23 @@
+{% extends 'feed/base.html' %}
+{% block content %}
+{% for funnel in landing_page %}
+<div class="container">
+  <img src="{{funnel.p_img}}" alt="{{ funnel.headline }}" class="img-fluid"><br>
+  <div class="card text-center">
+  <br>
+  <div class="card-body">
+    <h5 class="card-title font-weight-bold">{{ funnel.description_title }}</h5>
+    <p class="card-text">{{ funnel.description }}</p>
+    <a href="{{funnel.url}}" style="text-decoration:none;">
+      <div class="container-fluid rounded mb-5 p-2 text-center" style="background-color:{{funnel.theme}}; height:3em;">
+        <span style="font-family: 'Montserrat', sans-serif; color:#fff; font-size:1em;">{{funnel.cta}}</span>
+      </div>
+    </a>
+  </div>
+</div><br>
+<p class="lead">
+  {{funnel.body}}
+</p>
+</div>
+{% endfor %}
+{% endblock %}

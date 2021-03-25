@@ -1,0 +1,37 @@
+{% extends 'feed/base.html' %}
+{% block content %}
+{% for potd in potd %}
+<p class="text-center" style="font-size:25px;font-family: 'Montserrat', sans-serif;">Product of the day<i style="color:#FF9900;" class="bi bi-award-fill"></i></p>
+<div class="container-fluid">
+    <amp-img
+    alt="A view of the sea"
+    src="{{potd.img}}"
+    width="1080"
+    height="1080"
+    layout="responsive"
+    >
+    </amp-img>
+    <span class="font-weight-bold" style="font-family: 'Roboto', sans-serif;">Price: </span>{{potd.price}}<br>
+    <p style="font-family: 'Roboto', sans-serif;">
+      <span class="font-weight-bold">Description:</span><br>
+      {{potd.description|safe}}
+    </p>
+    <a href="{{potd.url}}" style="text-decoration:none;">
+      <div class="container-fluid rounded mb-5 p-2 text-center" style="background-color:#FF9900; height:3em;">
+        <span style="font-family: 'Montserrat', sans-serif; color:#000; font-size:1em;">{{potd.cta}}</span>
+        <i class="bi bi-arrow-right-circle-fill" style="color:#000"></i>
+      </div>
+    </a>
+</div>
+{% endfor %}
+{% for product in object_list %}
+<div class="card mb-3">
+  <img src="{{product.img}}" class="card-img-top" alt="{{product.headline}}">
+  <div class="card-body">
+    <h4 class="card-title" style="font-family: 'Montserrat', sans-serif;">{{product.headline}}</h4>
+    <a href="{% url 'articles:productdetail' product.slug %}" class="col-12 text-center btn btn-sm" style="font-size:25px; font-family: 'Montserrat', sans-serif; width:100%;background-color:#3a4cb1;color:white;">View</a>
+  </div>
+</div>
+{% endfor %}
+    </div>
+{% endblock %}

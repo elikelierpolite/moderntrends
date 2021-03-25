@@ -1,0 +1,40 @@
+{% extends 'feed/base.html' %}
+{% block content %}
+{% for article in object_list %}
+{% if article.category == 'Business' %}
+<div class="container-fluid">
+  <p style="font-size:32px;font-family: 'Montserrat', sans-serif;">{{article.headline}}</p>
+  <amp-img
+    alt="article.headline"
+    src="{{article.img}}"
+    width="1080"
+    height="1080"
+    layout="responsive"
+  >
+</amp-img>
+    {% if article.is_ad %}
+    <a href="" style="text-decoration:none;">
+      <div class="container-fluid rounded mb-5 p-2 text-center" style="background-color:#f50057; height:3em;">
+        <span style="font-family: 'Montserrat', sans-serif; color:#fff; font-size:1em;">{{article.cta}}</span>
+        <i class="bi bi-arrow-right-circle-fill" style="color:#fff"></i>
+      </div>
+    </a>
+    {% else %}
+    <div class="container-fluid shadow p-3 mb-5 bg-white rounded">
+      <div class="row d-flex justify-content-center">
+        <a href="{% url 'articles:article-detail' article.slug %}" class="col-12 text-center btn btn-sm btn-primary" style="font-size:25px; font-family: 'Montserrat', sans-serif; width:100%">View</a>
+      </div>
+      <hr />
+      <div style="font-family: 'Roboto', sans-serif;">
+        <span class="border border p-2" style="background-color: purple; color: white;">Business</span>
+      </div>
+    {% endif %}
+    </div>
+    {% endif %}
+    </div>
+{% empty %}
+  <h1>No articles here!</h1>
+{% endfor %}
+{% endblock %}
+
+                                        

@@ -1,0 +1,202 @@
+{% extends 'feed/base.html' %}
+{% block title %}
+| {{object.title}}
+{% endblock %}
+{% block content %}
+<h1 style="font-family: 'Montserrat', sans-serif; text-align:center;">{{object.headline}}</h1>
+<div class="container">
+  <amp-img
+    alt="{{article.headline}}"
+    src="{{object.img}}"
+    width="1080"
+    height="1080"
+    layout="responsive"
+  >
+</amp-img>
+</div>
+<div class="d-flex justify-content-center">
+<amp-social-share type="email"
+  aria-label="Share by email"></amp-social-share>
+<amp-social-share type="facebook"
+  aria-label="Share on Facebook"
+  data-param-app_id="254325784911610"></amp-social-share>
+<amp-social-share type="linkedin"
+  aria-label="Share on LinkedIn"></amp-social-share>
+<amp-social-share type="twitter"
+  aria-label="Share on Twitter"></amp-social-share>
+<amp-social-share type="whatsapp"
+  aria-label="Share on WhatsApp"></amp-social-share>
+</div>
+<hr />
+<div class="container">
+  <article class="mb-5 lead" style="text-align:center;font-family: 'Roboto', sans-serif;">
+    {{object.body|safe}}
+  </article>
+<div class="container">
+{% for advert in ad %}
+  <div class="row">
+    <div class="col-4 mb-2">
+      <img src="{{advert.ad_img}}" alt="{{ advert.ad_headline }}" class="rounded-circle" style="width:120px;height:120px;">
+    </div>
+    <div class="col-8">
+      <h5 style="font-family: 'Montserrat', sans-serif;">{{ advert.ad_headline }}</h5>
+      <small style="font-family: 'Montserrat', sans-serif;">{{ advert.ad_hook }}</small>
+    </div> 
+  </div>
+    <a href="{{advert.url}}" style="text-decoration:none;">
+      <div class="container-fluid rounded mb-5 p-2 text-center" style="background-color:{{advert.ad_theme}}; height:3em;">
+        <span style="font-family: 'Montserrat', sans-serif; color:#fff; font-size:1em;">{{advert.ad_cta}}</span>
+      </div>
+    </a>
+{% endfor %}
+</div>
+<hr>
+<div class="text-center">
+  <span class="font-weight-bold" style="font-size:25px">Share</span>
+<div class="d-flex justify-content-center">
+<amp-social-share type="email"
+  aria-label="Share by email"></amp-social-share>
+<amp-social-share type="facebook"
+  aria-label="Share on Facebook"
+  data-param-app_id="254325784911610"></amp-social-share>
+<amp-social-share type="linkedin"
+  aria-label="Share on LinkedIn"></amp-social-share>
+<amp-social-share type="twitter"
+  aria-label="Share on Twitter"></amp-social-share>
+<amp-social-share type="whatsapp"
+  aria-label="Share on WhatsApp"></amp-social-share>
+</div>
+<hr>
+</div>
+<span class="font-weight-bold" style="font-size:18px">You might also like</span>
+<div class="container-fluid">
+{% for discover in discover %}
+  <div class="row">
+    <div class="col-4 mb-2">
+      <img src="{{discover.discover_img}}" alt="{{ discover.discover_text }}" class="rounded-0 border" style="width:120px;height:120px;">
+    </div>
+    <div class="col-8" class="border">
+      <h5 style="font-family: 'Montserrat', sans-serif;">{{ discover.discover_text }}</h5>
+    </div> 
+  </div>
+    <a href="{% url 'articles:discoverdetail' discover.slug %}" style="text-decoration:none;">
+      <div class="container-fluid rounded mb-5 p-2 text-center" style="background-color:black;height:3em;">
+        <span style="font-family: 'Montserrat', sans-serif; color:#fff; font-size:1em;">View</span>
+      </div>
+    </a>
+{% endfor %}
+</div><div class="container-fluid">
+{% for topten in topten %}
+  <div class="row">
+    <div class="col-4 mb-2">
+      <img src="{{topten.list_img}}" alt="{{ topten.list_headline }}" class="rounded-0 border" style="width:120px;height:120px;">
+    </div>
+    <div class="col-8" class="border">
+      <h5 style="font-family: 'Montserrat', sans-serif;">{{ topten.list_headline }}</h5>
+    </div> 
+  </div>
+    <a href="{% url 'articles:listdetail' topten.slug %}" style="text-decoration:none;">
+      <div class="container-fluid rounded mb-5 p-2 text-center" style="background-color:black;height:3em;">
+        <span style="font-family: 'Montserrat', sans-serif; color:#fff; font-size:1em;">View</span>
+      </div>
+    </a>
+{% endfor %}
+</div><div class="container-fluid">
+{% for celebrity in celebrity %}
+  <div class="row">
+    <div class="col-4 mb-2">
+      <img src="{{celebrity.img}}" alt="{{ celebrity.headline }}" class="rounded-0 border" style="width:120px;height:120px;">
+    </div>
+    <div class="col-8" class="border">
+      <h5 style="font-family: 'Montserrat', sans-serif;">{{ celebrity.headline }}</h5>
+    </div> 
+  </div>
+    <a href="{% url 'articles:celebdetail' celebrity.slug %}" style="text-decoration:none;">
+      <div class="container-fluid rounded mb-5 p-2 text-center" style="background-color:black;height:3em;">
+        <span style="font-family: 'Montserrat', sans-serif; color:#fff; font-size:1em;">View</span>
+      </div>
+    </a>
+{% endfor %}
+</div><div class="container-fluid">
+{% for weview in weview %}
+  <div class="row">
+    <div class="col-4 mb-2">
+      <img src="{{weview.img}}" alt="{{ weview.headline }}" class="rounded-0 border" style="width:120px;height:120px;">
+    </div>
+    <div class="col-8" class="border">
+      <h5 style="font-family: 'Montserrat', sans-serif;">{{ weview.headline }}</h5>
+    </div> 
+  </div>
+    <a href="{% url 'articles:weviewdetail' weview.slug %}" style="text-decoration:none;">
+      <div class="container-fluid rounded mb-5 p-2 text-center" style="background-color:black;height:3em;">
+        <span style="font-family: 'Montserrat', sans-serif; color:#fff; font-size:1em;">View</span>
+      </div>
+    </a>
+{% endfor %}
+</div><div class="container-fluid">
+{% for video in video %}
+  <div class="row">
+    <div class="col-4 mb-2">
+      <img src="{{video.thumbnail}}" alt="{{ video.headline }}" class="rounded-0 border" style="width:120px;height:120px;">
+    </div>
+    <div class="col-8" class="border">
+      <h5 style="font-family: 'Montserrat', sans-serif;">{{ video.headline }}</h5>
+    </div> 
+  </div>
+    <a href="{% url 'articles:videodetail' video.slug %}" style="text-decoration:none;">
+      <div class="container-fluid rounded mb-5 p-2 text-center" style="background-color:black;height:3em;">
+        <span style="font-family: 'Montserrat', sans-serif; color:#fff; font-size:1em;">View</span>
+      </div>
+    </a>
+{% endfor %}
+</div><div class="container-fluid">
+{% for finance in finance %}
+  <div class="row">
+    <div class="col-4 mb-2">
+      <img src="{{finance.img}}" alt="{{ finance.headline }}" class="rounded-0 border" style="width:120px;height:120px;">
+    </div>
+    <div class="col-8" class="border">
+      <h5 style="font-family: 'Montserrat', sans-serif;">{{ finance.headline }}</h5>
+    </div> 
+  </div>
+    <a href="{% url 'articles:financedetail' finance.slug %}" style="text-decoration:none;">
+      <div class="container-fluid rounded mb-5 p-2 text-center" style="background-color:black;height:3em;">
+        <span style="font-family: 'Montserrat', sans-serif; color:#fff; font-size:1em;">View</span>
+      </div>
+    </a>
+{% endfor %}
+</div><div class="container-fluid">
+{% for future in future %}
+  <div class="row">
+    <div class="col-4 mb-2">
+      <img src="{{future.img}}" alt="{{ future.headline }}" class="rounded-0 border" style="width:120px;height:120px;">
+    </div>
+    <div class="col-8" class="border">
+      <h5 style="font-family: 'Montserrat', sans-serif;">{{ future.headline }}</h5>
+    </div> 
+  </div>
+    <a href="{% url 'articles:futuredetail' future.slug %}" style="text-decoration:none;">
+      <div class="container-fluid rounded mb-5 p-2 text-center" style="background-color:black;height:3em;">
+        <span style="font-family: 'Montserrat', sans-serif; color:#fff; font-size:1em;">View</span>
+      </div>
+    </a>
+{% endfor %}
+</div><div class="container-fluid">
+{% for product in product %}
+  <div class="row">
+    <div class="col-4 mb-2">
+      <img src="{{product.img}}" alt="{{ product.name }}" class="rounded-0 border" style="width:120px;height:120px;">
+    </div>
+    <div class="col-8" class="border">
+      <h5 style="font-family: 'Montserrat', sans-serif;">{{ product.name }}</h5>
+    </div> 
+  </div>
+    <a href="{% url 'articles:productdetail' product.slug %}" style="text-decoration:none;">
+      <div class="container-fluid rounded mb-5 p-2 text-center" style="background-color:black;height:3em;">
+        <span style="font-family: 'Montserrat', sans-serif; color:#fff; font-size:1em;">View</span>
+      </div>
+    </a>
+{% endfor %}
+</div>
+</div>
+{% endblock %}

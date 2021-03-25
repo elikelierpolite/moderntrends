@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+{% extends 'feed/base.html' %}
+{% block content %}
+    <!-- message if email is sent -->
+  {% if messages %}
+    {% for message in messages %}
+      <div class="my-5 alert alert-success">
+        <h5 class="m-0">
+            {{ message }}
+        </h5>
+      </div>
+    {% endfor %}
+  {% endif %}
+  <amp-img
+    alt="Subscribe to our newsletter to be part of version 2.0"
+    src="https://i.ibb.co/rMtP9k1/20210324-145333-0000.png"
+    width="1080"
+    height="1080"
+    layout="responsive"
+  >
+</amp-img><br>
+    <form method="post" action="{% url 'subscription:subscription' %}" class="d-flex justify-content-center">
+      {% csrf_token %}
+
+      <div class="form-group text-center">
+        <h1 style="font-family: 'Montserrat', sans-serif;">Subscribe to get the latest Articles</h1> <br>
+        <input class="form-control" type="email" name="email" placeholder="Enter Email to Subscribe"><br>
+        <button class="btn btn-info" type="submit">Submit</button>
+      </div>
+
+    </form>
+{% endblock %}

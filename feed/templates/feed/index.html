@@ -1,0 +1,60 @@
+{% extends 'feed/base.html' %}
+{% block content %}
+{% for article in object_list %}
+<div class="container-fluid">
+  <h1 style="font-size:32px;font-family: 'Montserrat', sans-serif;">{{article.headline|title}}</h1>
+  <amp-img
+    alt="{{article.headline}}"
+    src="{{article.img}}"
+    width="1080"
+    height="1080"
+    layout="responsive"
+  >
+</amp-img>
+    {% if article.is_ad %}
+    <a href="{{article.ad_url}}" style="text-decoration:none;">
+      <div class="container-fluid rounded mb-5 p-2 text-center" style="background-color:{{article.theme}}; height:3em;">
+        <span style="font-family: 'Montserrat', sans-serif; color:#fff; font-size:1em;">{{article.cta}}</span>
+        <i class="bi bi-arrow-right-circle-fill" style="color:#fff"></i>
+      </div>
+    </a>
+    {% else %}
+    <div class="container-fluid shadow p-3 mb-5 bg-white rounded">
+      <div class="row d-flex justify-content-center">
+        <a href="{% url 'articles:article-detail' article.slug %}" class="col-12 text-center btn" style="font-size:25px; font-family: 'Montserrat', sans-serif; width:100%;color:white;background-color:#212121;">View</a>
+      </div>
+      <hr />
+    {% if article.category == 'Sports' %}
+      <div style="font-family: 'Montserrat', sans-serif;">
+        <span class="border border-success p-2" style="background-color: green; color: white;font-family: 'Montserrat', sans-serif;">{{ article.category }}</span>
+      </div>
+    {% endif %}
+    {% if article.category == 'BreakingNews' %}
+      <div style="font-family: 'Josefin Sans', sans-serif;">
+        <span class="border border-danger p-2" style="background-color: red; color: white;font-family: 'Montserrat', sans-serif;">Breaking News</span>
+      </div>
+    {% endif %}
+    {% if article.category == 'Health' %}
+      <div style="font-family: 'Josefin Sans', sans-serif;">
+        <span class="border border-primary p-2" style="background-color: steelblue; color: white;font-family: 'Montserrat', sans-serif;">{{ article.category }}</span>
+      </div>
+    {% endif %}
+    {% if article.category == 'Politics' %}
+      <div style="font-family: 'Josefin Sans', sans-serif;">
+        <span class="border p-2" style="background-color: brown; color: white;font-family: 'Montserrat', sans-serif;">{{ article.category }}</span>
+      </div>
+    {% endif %}
+    {% if article.category == 'Business' %}
+      <div style="font-family: 'Josefin Sans', sans-serif;">
+        <span class="border p-2" style="background-color: purple; color: white;font-family: 'Montserrat', sans-serif;">{{ article.category }}</span>
+      </div>
+    {% endif %}
+    </div>
+    {% endif %}
+    </div>
+    {% empty %}
+    <h1>no articles here</h1>
+{% endfor %}
+    </div>
+    </div>
+{% endblock %}

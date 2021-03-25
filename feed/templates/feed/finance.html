@@ -1,0 +1,13 @@
+{% extends 'feed/base.html' %}
+{% block content %}
+{% for finance in object_list %}
+<div class="card mb-3">
+  <img src="{{finance.img}}" class="card-img-top" alt="{{finance.headline}}">
+  <div class="card-body">
+    <h4 class="card-title" style="font-family: 'Montserrat', sans-serif;">{{finance.headline}}</h4>
+    <a href="{% url 'articles:financedetail' finance.slug %}" class="col-12 text-center btn btn-sm" style="font-size:25px; font-family: 'Montserrat', sans-serif; width:100%;background-color:#3a4cb1;color:white;">View</a>
+  </div>
+</div>
+{% endfor %}
+    </div>
+{% endblock %}

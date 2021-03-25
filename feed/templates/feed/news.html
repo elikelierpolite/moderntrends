@@ -1,0 +1,25 @@
+{% extends 'feed/base.html' %}
+{% block content %}
+<div class="container" style="display: grid; grid-template-columns:2fr 2fr 4fr 2fr 2fr; grid-gap:1em; grid-auto-rows:200px;">
+  <a href="{% url 'articles:breakingnews' %}" class="news rounded" style="background: url(https://i.ibb.co/K2kxpsk/photo-1572949645841-094f3a9c4c94-min.jpg);background-size:cover; grid-column:1/4; position:relative;display:flex;justify-content:center;align-items:center;">
+    <div style="width:100%; height:100%; background-color:#000; position:absolute; opacity:0.7;"></div>
+    <h4 style="position:absolute;z-index:1;color:#fff;font-family: 'Josefin Sans', sans-serif;">Breaking News</h4>
+  </a>
+  <a href="{% url 'articles:sports' %}" class="sports rounded" style="background-image: url(https://i.ibb.co/mSC8hjy/photo-1461896836934-ffe607ba8211-min.jpg);background-size:cover; grid-column:4/6; position:relative;display:flex;justify-content:center;align-items:center;">
+    <div style="width:100%; height:100%; background-color:#000; position:absolute; opacity:0.7;"></div>
+    <h4 style="position:absolute;z-index:1;color:#fff;font-family: 'Josefin Sans', sans-serif;">Sports</h4>
+  </a>
+  <a href="{% url 'articles:health' %}" class="health rounded" style="background-image: url(https://i.ibb.co/rfJbLhn/photo-1532938911079-1b06ac7ceec7-min.jpg);background-size:cover; grid-column:1/6; position:relative;display:flex;justify-content:center;align-items:center;">
+    <div style="width:100%; height:100%; background-color:#000; position:absolute; opacity:0.7;"></div>
+    <h4 style="position:absolute;z-index:1;color:#fff;font-family: 'Josefin Sans', sans-serif;">Health</h4>
+  </a>
+  <a href="{% url 'articles:politics' %}" class="politics rounded" style="background-image: url(https://i.ibb.co/R9W45W9/photo-1529107386315-e1a2ed48a620-min.jpg);background-size:cover; grid-column:1/3; position:relative;display:flex;justify-content:center;align-items:center;">
+    <div style="width:100%; height:100%; background-color:#000; position:absolute; opacity:0.7;"></div>
+    <h4 style="position:absolute;z-index:1;color:#fff;font-family: 'Josefin Sans', sans-serif;">Politics</h4>
+  </a>
+  <a href="{% url 'articles:business' %}" class="business rounded" style="background-image: url(https://i.ibb.co/gyWS5Z8/photo-1573164574572-cb89e39749b4-min.jpg);background-size:cover; grid-column:3/6; position:relative;display:flex;justify-content:center;align-items:center;">
+    <div style="width:100%; height:100%; background-color:#000; position:absolute; opacity:0.7;"></div>
+    <h4 style="position:absolute;z-index:1;color:#fff;font-family: 'Josefin Sans', sans-serif;">Business</h4>
+  </a>
+</div>
+{% endblock %}
