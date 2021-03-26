@@ -57,6 +57,7 @@ INSTALLED_APPS = [
 ]
 SITE_ID = 1
 MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -144,3 +145,4 @@ MAILCHIMP_EMAIL_LIST_ID = "99fa2e19ae"
 
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'static'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
