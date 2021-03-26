@@ -26,7 +26,7 @@ SECRET_KEY = '!3)*n!s-*maz+(z-bw=#+17&ag%g375ey7wmmy$$nu1ofi29ru'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'moderntrends.herokuapp.com', 'moderntrends.ml']
+ALLOWED_HOSTS = ['127.0.0.1', 'moderntrends.herokuapp.com', 'moderntrends.ml', 'www.moderntrends.ml']
 
 
 # Application definition
