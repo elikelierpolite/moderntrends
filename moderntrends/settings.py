@@ -94,7 +94,11 @@ AUTH_USER_MODEL = 'accounts.Account'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': 'd27e7qum202r8c',
+        'HOST': 'ec2-107-22-245-82.compute-1.amazonaws.com',
+        'PORT': 5432,
+        'USER': 'qkzazizwfnedcb',
+        'PASSWORD': 'cf3b0b9a4875a4476dca7ac4a58a0191e307d0dec8058caa074ace07c9065738'
     }
 }
 
@@ -139,4 +143,4 @@ MAILCHIMP_EMAIL_LIST_ID = "99fa2e19ae"
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR,'static')

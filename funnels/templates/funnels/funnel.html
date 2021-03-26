@@ -2,7 +2,31 @@
 {% block content %}
 {% for funnel in landing_page %}
 <div class="container">
-  <img src="{{funnel.p_img}}" alt="{{ funnel.headline }}" class="img-fluid"><br>
+  <div class="row">
+    <div class="col-4 mb-2">
+      <img src="{{funnel.img}}" alt="{{ funnel.headline }}" class="rounded-circle" style="width:120px;height:120px;">
+    </div>
+    <div class="col-8">
+      <h5 style="font-family: 'Montserrat', sans-serif;">{{ funnel.headline }}</h5>
+      <small style="font-family: 'Montserrat', sans-serif;">{{ funnel.hook }}</small>
+    </div> 
+  </div>
+    <a href="{{funnel.url}}" style="text-decoration:none;">
+      <div class="container-fluid rounded mb-5 p-2 text-center" style="background-color:{{funnel.theme}}; height:3em;">
+        <span style="font-family: 'Montserrat', sans-serif; color:#fff; font-size:1em;">{{funnel.cta}}</span>
+      </div>
+    </a><br>
+  <amp-img
+    alt="{{funnel.headline}}"
+    src="{{funnel.p_img}}"
+    width="1080"
+    height="1080"
+    layout="responsive"
+  >
+</amp-img><br>
+<p class="lead" style="font-family: 'Montserrat', sans-serif;">
+  {{funnel.body|safe}}
+</p><br>
   <div class="card text-center">
   <br>
   <div class="card-body">
@@ -14,10 +38,7 @@
       </div>
     </a>
   </div>
-</div><br>
-<p class="lead">
-  {{funnel.body}}
-</p>
 </div>
+</div><br>
 {% endfor %}
 {% endblock %}

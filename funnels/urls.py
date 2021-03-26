@@ -3,5 +3,5 @@ from .views import funnelpage
 
 app_name = 'funnels'
 urlpatterns = [
-    path('<int:funnel>/', funnelpage, name='funneldetail'),
+    path('<slug:funnel>/', funnelpage, name='funneldetail'),
 ]
