@@ -74,38 +74,6 @@
             </amp-story-grid-layer>
           </amp-story-page>
           {% endfor %}
-          <amp-story-bookend layout="nodisplay">
-    <script type="application/json">
-       {
-         "bookendVersion": "v1.0",
-         "shareProviders": [
-             {
-               "provider": "facebook",
-               "app_id": "484417382714055"
-             },
-             {
-               "provider": "twitter"
-             },
-             {
-               "provider": "linkedin"
-             },
-             {
-               "provider": "whatsapp"
-             },
-             "email",
-             "tumblr"
-           ],
-         "components": [ {  {% for story in story.blogpage_set.all %}
-                            "type": "landscape",
-                            "title": "{{story.up_next_title}}",
-                            "url": "{{story.up_next_url}}",
-                            "category": "Trending",
-                            "image": "{{story.up_next_img}}"
-                            {% endfor %}
-                          } ]
-      }
-    </script>
-  </amp-story-bookend>
   </body>
 </html>
 {% else %}
@@ -208,13 +176,12 @@
              "email",
              "tumblr"
            ],
-         "components": [ {  {% for story in story.blogpage_set.all %}
+         "components": [ {  
                             "type": "landscape",
                             "title": "{{story.up_next_title}}",
                             "url": "{{story.up_next_url}}",
                             "category": "Trending",
                             "image": "{{story.up_next_img}}"
-                            {% endfor %}
                           } ]
       }
     </script>

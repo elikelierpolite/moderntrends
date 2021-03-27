@@ -173,13 +173,12 @@
              "email",
              "tumblr"
            ],
-         "components": [ {  {% for story in story.page_set.all %}
+         "components": [ {
                             "type": "landscape",
                             "title": "{{story.up_next_title}}",
                             "url": "{{story.up_next_url}}",
                             "category": "Trending",
                             "image": "{{story.up_next_img}}"
-                            {% endfor %}
                           } ]
       }
     </script>

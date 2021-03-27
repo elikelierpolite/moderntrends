@@ -8,7 +8,7 @@ class PageInline(admin.TabularInline):
 
 
 class AccountStoryAdmin(admin.ModelAdmin):
-    fieldsets = [(None, {'fields': ['story_text', 'story_img', 'slug', 'is_ad', 'ad_cta', 'ad_url']}) ]
+    fieldsets = [(None, {'fields': ['story_text', 'story_img', 'slug', 'is_ad', 'ad_cta', 'ad_url', 'up_next_title', 'up_next_img', 'up_next_url']}) ]
     inlines = [PageInline]
 
 
