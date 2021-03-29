@@ -14,6 +14,7 @@ from .models import Article, Discover, Topten, Celebrity, Weview, Video, Finance
 import urllib.request
 import json
 
+#!!************* SITEMAPS ***************!#
 def article(request, article_slug):
   item = get_object_or_404(Article, slug=article_slug)
   ad = Ad.objects.order_by('-pk')[:1]
@@ -45,6 +46,8 @@ def blog(request, post_slug):
   future = Future.objects.order_by('-pk')[:1]
   product = Product.objects.order_by('-pk')[:1]
   return render (request, 'blog/blog.html', {'blog':item, 'ad':ad, 'story':story, 'userstory':userstory, 'readerstory':readerstory, 'discover':discover, 'topten':topten, 'celebrity':celebrity, 'weview':weview, 'video':video, 'finance':finance, 'future':future, 'product':product})
+  
+#!!************* SITEMAPS *************!!#
 
 class ArticleListView(ListView):
 

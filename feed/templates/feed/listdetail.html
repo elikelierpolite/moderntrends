@@ -21,10 +21,19 @@
 {% for item in object.listitem_set.all %}
 <div class="container">
   <h2 style="font-family: 'Montserrat', sans-serif;" class="text-center">{{item.item_title}}<i class="bi bi-stars" style="color:#ffeb3b"></i></h2>
+    <amp-img
+    alt="{{item.item_title}}"
+    src="{{item.item_content_img}}"
+    width="1080"
+    height="1080"
+    layout="responsive"
+  >
+</amp-img><br>
   <article class="mb-5 lead" style="text-align:center;font-family: 'Roboto', sans-serif;">
     {{item.item_content|safe}}
   </article>
 </div>
+{% endfor %}
 <hr>
 <div class="text-center">
   <span class="font-weight-bold" style="font-size:25px">Share</span>
@@ -173,5 +182,4 @@
     </a>
 {% endfor %}
 </div>
-{% endfor %}
 {% endblock %}

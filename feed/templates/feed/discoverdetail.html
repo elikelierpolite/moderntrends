@@ -51,17 +51,16 @@
         line-height: 2em;
       }
     </style>
-    <title></title>
     <meta name="amp-cta-type" content="{{discover.cta}}">
     <meta name="amp-cta-url" content="{{discover.url}}">
   </head>
   <body>
       <!-- Cover page -->
       <amp-story standalone
-          title="{{discover.discover_title}}"
+          title="{{discover.title}}"
           publisher="Modern Trends"
           publisher-logo-src="{{discover.discover_img}}"
-          poster-portrait-src="{{discover_img.discover_img}}">
+          poster-portrait-src="{{discover.discover_img}}">
           {% for discover in discover.discoverpage_set.all %}
           <amp-story-page id="story" auto-advance-after="4s">
             <amp-story-grid-layer template="fill">
@@ -80,7 +79,7 @@
   <head>
     <meta charset="utf-8">
     {% for discover in discover.discoverpage_set.all %}
-    <title>{{story.story_title}}</title>
+    <title>{{discover.discover_title}}</title>
     {% endfor %}
     <link rel="canonical" href="">
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
@@ -174,13 +173,12 @@
              "email",
              "tumblr"
            ],
-         "components": [ {  {% for discover in discover.discoverpage_set.all %}
+         "components": [ {
                             "type": "landscape",
                             "title": "{{discover.up_next_title}}",
                             "url": "{{discover.up_next_url}}",
                             "category": "Trending",
                             "image": "{{discover.up_next_img}}"
-                            {% endfor %}
                           } ]
       }
     </script>

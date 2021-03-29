@@ -1,5 +1,4 @@
 from django.db import models
-from ckeditor.fields import RichTextField
 
 class Funnel(models.Model):
   slug = models.SlugField(unique=True)
@@ -13,7 +12,7 @@ class Funnel(models.Model):
   p_img = models.TextField()
   description_title = models.CharField(null=True,max_length=200)
   description = models.TextField()
-  body = RichTextField(null=True, blank=True)
+  body = models.TextField(null=True, blank=True)
   
   def __str__(self):
     return self.headline

@@ -1,6 +1,5 @@
 from django.db import models
 from django.urls import reverse
-from ckeditor.fields import RichTextField
 from django.db.models.signals import pre_save
 from django.utils.text import slugify
 
@@ -9,8 +8,8 @@ class Article(models.Model):
   headline = models.CharField(max_length=200, null=True, blank=True)
   img = models.CharField(max_length=200, null=True, blank=True)
   hook = models.CharField(max_length=200, null=True, blank=True)
-  body =  RichTextField(blank=True, null=True)
-  body2 = RichTextField(blank=True, null=True)
+  body =  models.TextField(blank=True, null=True)
+  body2 = models.TextField(blank=True, null=True)
   slug = models.SlugField(unique=True)
   pub_date = models.DateTimeField('date published', auto_now_add=True, null=True, blank=True)
   BREAKINGNEWS = 'BreakingNews'
@@ -71,6 +70,9 @@ class Discover(models.Model):
     is_ad = models.BooleanField(default=False)
     cta = models.CharField(null=True,max_length=200, blank=True)
     url = models.CharField(null=True,max_length=200, blank=True)
+    up_next_title = models.CharField(max_length=200, null=True)
+    up_next_img = models.TextField(null=True)
+    up_next_url = models.CharField(max_length=200, null=True)
 
     def __str__(self):
         return self.discover_text
@@ -97,22 +99,19 @@ class DiscoverPage(models.Model):
     discover = models.ForeignKey(Discover, on_delete=models.CASCADE)
     discover_title = models.CharField(max_length=200)
     discover_img = models.TextField()
-    up_next_title = models.CharField(max_length=200, null=True)
-    up_next_img = models.TextField(null=True)
-    up_next_url = models.CharField(max_length=200, null=True)
     
 
     def __str__(self):
         return self.discover_title
     
 class Topten(models.Model):
-    title = models.CharField(max_length=200, null=True, blank=True)
-    list_headline = models.CharField(null=True,max_length=200)
-    list_img = models.TextField(null=True)
-    slug = models.SlugField(unique=True)
+  title = models.CharField(max_length=200, null=True, blank=True)
+  list_headline = models.CharField(null=True,max_length=200)
+  list_img = models.TextField(null=True)
+  slug = models.SlugField(unique=True)
 
-    def __str__(self):
-        return self.list_headline
+  def __str__(self):
+    return self.list_headline
         
 def create_slug_t(instance, new_slug=None):
   slug = slugify(instance.list_headline)
@@ -135,7 +134,8 @@ pre_save.connect(pre_save_post_receiver, sender=Topten)
 class ListItem(models.Model):
     topten   = models.ForeignKey(Topten, on_delete=models.CASCADE)
     item_title = models.CharField(max_length=200, null=True)
-    item_content = RichTextField(blank=True, null=True)
+    item_content = models.TextField(blank=True, null=True)
+    item_content_img = models.TextField(blank=True, null=True)
     
 
     def __str__(self):
@@ -146,7 +146,7 @@ class Celebrity(models.Model):
   headline = models.CharField(max_length=200, null=True)
   img = models.TextField(null=True)
   slug = models.SlugField(unique=True)
-  body = RichTextField(blank=True, null=True)
+  body = models.TextField(blank=True, null=True)
   def __str__(self):
     return self.headline
 
@@ -172,7 +172,7 @@ class Weview(models.Model):
   headline = models.CharField(max_length=200, null=True)
   img = models.TextField(null=True)
   slug = models.SlugField(unique=True)
-  body = RichTextField(blank=True, null=True)
+  body = models.TextField(blank=True, null=True)
   
   def __str__(self):
     return self.headline
@@ -183,7 +183,7 @@ class Video(models.Model):
     thumbnail = models.TextField(null=True)
     slug = models.SlugField(unique=True)
     video = models.CharField(max_length=200, null=True)
-    description = RichTextField(blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
     
     def __str__(self):
       return self.headline
@@ -193,7 +193,7 @@ class Finance(models.Model):
   headline = models.CharField(max_length=200, null=True)
   img = models.TextField(null=True)
   slug = models.SlugField(unique=True)
-  body = RichTextField(blank=True, null=True)
+  body = models.TextField(blank=True, null=True)
   
   def __str__(self):
       return self.headline
@@ -203,7 +203,7 @@ class Future(models.Model):
   headline = models.CharField(max_length=200, null=True)
   img = models.TextField(null=True)
   slug = models.SlugField(unique=True)
-  body = RichTextField(blank=True, null=True)
+  body = models.TextField(blank=True, null=True)
   
   def __str__(self):
       return self.headline
@@ -211,50 +211,16 @@ class Future(models.Model):
   
 class Product(models.Model):
   title = models.CharField(max_length=200, null=True, blank=True)
+  name = models.CharField(max_length=200, null=True, blank=True)
   headline = models.CharField(max_length=200, null=True)
   img = models.TextField(null=True)
   slug = models.SlugField(unique=True)
-  body = RichTextField(blank=True, null=True)
-  name = models.CharField(max_length=200, null=True)
-  ELECTRONICS = 'Electronics'
-  CLOTHING = 'Clothing'
-  HOME = 'Home'
-  ACCESSORIES = 'Accessories'
-  BEAUTY = 'Beauty'
-  BOOKS = 'Books'
-  TOYS = 'Toys'
-  APPLIANCES = 'Appliances'
-  OFFICE = 'Office'
-  PERSONAL = 'Personal'
-  GAMES = 'Games'
-  SPORTS = 'Sports'
-  PETS = 'Pets'
-  PC = 'Pc'
-  VIDEO = 'Video'
-  category = [
-        (ELECTRONICS, 'Electronics'),
-        (CLOTHING, 'Clothing'),
-        (HOME, 'Home'),
-        (ACCESSORIES, 'Accessories'),
-        (BEAUTY, 'Beauty'),
-        (BOOKS, 'Books'),
-        (TOYS, 'Toys'),
-        (APPLIANCES, 'Appliances'),
-        (OFFICE, 'Office'),
-        (PERSONAL, 'Personal'),
-        (GAMES, 'Games'),
-        (SPORTS, 'Sports'),
-        (PETS, 'Pets'),
-        (PC, 'Pc'),
-        (VIDEO, 'Video'),
-    ]
-  category = models.CharField(
-        max_length=200,
-        choices=category,
-        default=ELECTRONICS,
-    )
+  body = models.TextField(blank=True, null=True)
   price = models.CharField(max_length=200, null=True)
-  description = RichTextField(blank=True, null=True)
+  cta = models.CharField(max_length=200, null=True)
+  url = models.CharField(max_length=200, null=True)
+  theme = models.CharField(max_length=200, null=True)
+  description = models.TextField(blank=True, null=True)
   
   def __str__(self):
     return self.headline
@@ -262,9 +228,8 @@ class Product(models.Model):
 class Productotd(models.Model):
   name = models.CharField(max_length=200, null=True)
   img = models.TextField(null=True)
-  slug = models.SlugField(unique=True)
   price = models.CharField(max_length=200, null=True)
-  description = RichTextField(blank=True, null=True)
+  description = models.TextField(blank=True, null=True)
   cta = models.CharField(max_length=200, null=True)
   url = models.TextField(null=True)
   

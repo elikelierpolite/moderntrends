@@ -8,7 +8,7 @@ class PageInline(admin.TabularInline):
 
 
 class DiscoverAdmin(admin.ModelAdmin):
-    fieldsets = [(None, {'fields': ['title','discover_text', 'discover_img', 'hook', 'slug', 'is_ad', 'cta', 'url']}) ]
+    fieldsets = [(None, {'fields': ['title','discover_text', 'discover_img', 'hook', 'slug', 'is_ad', 'cta', 'url', 'up_next_title', 'up_next_img', 'up_next_url']}) ]
     inlines = [PageInline]
     
 class ListInline(admin.TabularInline):

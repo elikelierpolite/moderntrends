@@ -29,9 +29,21 @@
 </div>
 <hr />
 <div class="container">
-  <article class="mb-5 lead" style="text-align:center;font-family: 'Roboto', sans-serif;">
+  <article class="mb-5 lead" style="font-family: 'Roboto', sans-serif;">
     {{object.body|safe}}
-  </article>
+  </article><br>
+  <div class="description" style="text-align:center;font-family: 'Roboto', sans-serif;">
+    <p>
+      {{object.description}}
+    </p>
+    <span class="border">{{object.price}}</span>
+    <a href="{{object.url}}" style="text-decoration:none;">
+    <div class="container-fluid rounded mb-5 p-2 text-center" style="background-color:{{object.theme}}; height:3em;">
+      <span style="font-family: 'Montserrat', sans-serif; color:#fff; font-size:1em;">{{object.cta}}</span>
+      <i class="bi bi-arrow-right-circle-fill" style="color:#fff"></i>
+    </div>
+    </a>
+  </div>
 <hr>
   <div class="text-center">
   <span class="font-weight-bold" style="font-size:25px">Share</span>

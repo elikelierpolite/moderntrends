@@ -1,5 +1,5 @@
 from django.contrib.sitemaps import Sitemap
-from .models import Article
+from .models import Article, Topten
 from blog.models import Blog
 
 class ArticleSitemap(Sitemap):
@@ -9,3 +9,4 @@ class ArticleSitemap(Sitemap):
 class BlogSitemap(Sitemap):
   def items(self):
     return Blog.objects.all()
+    
