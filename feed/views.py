@@ -9,6 +9,7 @@ from notifications.models import Notification
 from subscribers.models import Subscriber
 from userstory.models import UserStory, ReaderStory
 from ads.models import Ad
+from funnels.models import Funnel
 from .models import Article, Discover, Topten, Celebrity, Weview, Video, Finance, Future, Product, Productotd
 
 import urllib.request
@@ -29,7 +30,8 @@ def article(request, article_slug):
   finance = Finance.objects.order_by('-pk')[:1]
   future = Future.objects.order_by('-pk')[:1]
   product = Product.objects.order_by('-pk')[:1]
-  return render (request, 'feed/articles.html', {'article':item, 'ad':ad, 'story':story, 'userstory':userstory, 'readerstory':readerstory, 'discover':discover, 'topten':topten, 'celebrity':celebrity, 'weview':weview, 'video':video, 'finance':finance, 'future':future, 'product':product})
+  funnel = Funnel.objects.order_by('-pk')[:1]
+  return render (request, 'feed/articles.html', {'article':item, 'ad':ad, 'story':story, 'userstory':userstory, 'readerstory':readerstory, 'discover':discover, 'topten':topten, 'celebrity':celebrity, 'weview':weview, 'video':video, 'finance':finance, 'future':future, 'product':product, 'funnel':funnel})
   
 def blog(request, post_slug):
   item = get_object_or_404(Blog, slug=post_slug)
@@ -45,7 +47,8 @@ def blog(request, post_slug):
   finance = Finance.objects.order_by('-pk')[:1]
   future = Future.objects.order_by('-pk')[:1]
   product = Product.objects.order_by('-pk')[:1]
-  return render (request, 'blog/blog.html', {'blog':item, 'ad':ad, 'story':story, 'userstory':userstory, 'readerstory':readerstory, 'discover':discover, 'topten':topten, 'celebrity':celebrity, 'weview':weview, 'video':video, 'finance':finance, 'future':future, 'product':product})
+  funnel = Funnel.objects.order_by('-pk')[:1]
+  return render (request, 'blog/blog.html', {'blog':item, 'ad':ad, 'story':story, 'userstory':userstory, 'readerstory':readerstory, 'discover':discover, 'topten':topten, 'celebrity':celebrity, 'weview':weview, 'video':video, 'finance':finance, 'future':future, 'product':product, 'funnel':funnel})
   
 #!!************* SITEMAPS *************!!#
 
@@ -93,6 +96,7 @@ class ArticleDetailView(DetailView):
         context['finance'] = Finance.objects.order_by('-pk')[:1]
         context['future'] = Future.objects.order_by('-pk')[:1]
         context['product'] = Product.objects.order_by('-pk')[:1]
+        context['funnel'] = Funnel.objects.order_by('-pk')[:1]
         context['notification'] = 0
         if self.request.user.is_authenticated:
           context['notification'] = Notification.objects.filter(to=self.request.user, seen=False).count()
@@ -296,6 +300,7 @@ class ListDetailView(DetailView):
         context['finance'] = Finance.objects.order_by('-pk')[:1]
         context['future'] = Future.objects.order_by('-pk')[:1]
         context['product'] = Product.objects.order_by('-pk')[:1]
+        context['funnel'] = Funnel.objects.order_by('-pk')[:1]
         context['notification'] = 0
         if self.request.user.is_authenticated:
           context['notification'] = Notification.objects.filter(to=self.request.user, seen=False).count()
@@ -338,6 +343,7 @@ class CelebDetailView(DetailView):
         context['finance'] = Finance.objects.order_by('-pk')[:1]
         context['future'] = Future.objects.order_by('-pk')[:1]
         context['product'] = Product.objects.order_by('-pk')[:1]
+        context['funnel'] = Funnel.objects.order_by('-pk')[:1]
         context['notification'] = 0
         if self.request.user.is_authenticated:
           context['notification'] = Notification.objects.filter(to=self.request.user, seen=False).count()
@@ -380,6 +386,7 @@ class WeViewDetailView(DetailView):
         context['finance'] = Finance.objects.order_by('-pk')[:1]
         context['future'] = Future.objects.order_by('-pk')[:1]
         context['product'] = Product.objects.order_by('-pk')[:1]
+        context['funnel'] = Funnel.objects.order_by('-pk')[:1]
         context['notification'] = 0
         if self.request.user.is_authenticated:
           context['notification'] = Notification.objects.filter(to=self.request.user, seen=False).count()
@@ -422,6 +429,7 @@ class VideoDetailView(DetailView):
         context['finance'] = Finance.objects.order_by('-pk')[:1]
         context['future'] = Future.objects.order_by('-pk')[:1]
         context['product'] = Product.objects.order_by('-pk')[:1]
+        context['funnel'] = Funnel.objects.order_by('-pk')[:1]
         context['notification'] = 0
         if self.request.user.is_authenticated:
           context['notification'] = Notification.objects.filter(to=self.request.user, seen=False).count()
@@ -463,6 +471,7 @@ class FinanceDetailView(DetailView):
         context['finance'] = Finance.objects.order_by('-pk')[:1]
         context['future'] = Future.objects.order_by('-pk')[:1]
         context['product'] = Product.objects.order_by('-pk')[:1]
+        context['funnel'] = Funnel.objects.order_by('-pk')[:1]
         context['ad'] = Ad.objects.order_by('-pk')[4:5]
         context['notification'] = 0
         if self.request.user.is_authenticated:
@@ -506,6 +515,7 @@ class FutureDetailView(DetailView):
         context['finance'] = Finance.objects.order_by('-pk')[:1]
         context['future'] = Future.objects.order_by('-pk')[:1]
         context['product'] = Product.objects.order_by('-pk')[:1]
+        context['funnel'] = Funnel.objects.order_by('-pk')[:1]
         context['notification'] = 0
         if self.request.user.is_authenticated:
           context['notification'] = Notification.objects.filter(to=self.request.user, seen=False).count()
@@ -549,6 +559,7 @@ class ProductDetailView(DetailView):
         context['finance'] = Finance.objects.order_by('-pk')[:1]
         context['future'] = Future.objects.order_by('-pk')[:1]
         context['product'] = Product.objects.order_by('-pk')[:1]
+        context['funnel'] = Funnel.objects.order_by('-pk')[:1]
         context['notification'] = 0
         if self.request.user.is_authenticated:
           context['notification'] = Notification.objects.filter(to=self.request.user, seen=False).count()

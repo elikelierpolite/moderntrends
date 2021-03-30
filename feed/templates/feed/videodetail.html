@@ -50,6 +50,21 @@
 </div>
   <span class="font-weight-bold" style="font-size:18px">You might also like</span>
 <div class="container-fluid">
+{% for funnel in funnel %}
+  <div class="row">
+    <div class="col-4 mb-2">
+      <img src="{{funnel.img}}" alt="{{ funnel.headline }}" class="rounded-0 border" style="width:120px;height:120px;">
+    </div>
+    <div class="col-8" class="border">
+      <h5 style="font-family: 'Montserrat', sans-serif;">{{ funnel.headline }}</h5>
+    </div> 
+  </div>
+    <a href="{% url 'funnels:funneldetail' funnel.slug %}" style="text-decoration:none;">
+      <div class="container-fluid rounded mb-5 p-2 text-center" style="background-color:black;height:3em;">
+        <span style="font-family: 'Montserrat', sans-serif; color:#fff; font-size:1em;">View</span>
+      </div>
+    </a>
+{% endfor %}
 {% for discover in discover %}
   <div class="row">
     <div class="col-4 mb-2">
