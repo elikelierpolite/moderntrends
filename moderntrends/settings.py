@@ -146,4 +146,3 @@ MAILCHIMP_EMAIL_LIST_ID = "99fa2e19ae"
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'static'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-django_heroku.settings(locals())
