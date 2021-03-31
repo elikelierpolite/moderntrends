@@ -95,11 +95,7 @@ AUTH_USER_MODEL = 'accounts.Account'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'ddvtt8n405tdd3',
-        'HOST': 'ec2-23-22-191-232.compute-1.amazonaws.com',
-        'PORT': 5432,
-        'USER': 'pkddyfdbfasopq',
-        'PASSWORD': '13bfb9664a75b2b0a89f822a1d56e2e41aee1df63a0463d35fc2fd2c48c3f3f2'
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
